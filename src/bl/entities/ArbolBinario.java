@@ -2,9 +2,27 @@ package bl.entities;
 
 public class ArbolBinario {
     private Nodo raiz;
+    private String resultado;
 
     public ArbolBinario() {
         raiz = null;
+        resultado = "";
+    }
+
+    public Nodo getRaiz() {
+        return raiz;
+    }
+
+    public void setRaiz(Nodo raiz) {
+        this.raiz = raiz;
+    }
+
+    public String getResultado() {
+        return resultado;
+    }
+
+    public void setResultado(String resultado) {
+        this.resultado = resultado;
     }
 
     public void insertar(int dato) {
@@ -33,38 +51,46 @@ public class ArbolBinario {
 
     private void preorden(Nodo n) {
         if (n != null) {
-            n.imprimirDato();
+            resultado += n.getDato() + ",";
             preorden(n.getIzquierda());
             preorden(n.getDerecha());
         }
+
     }
 
     private void inorden(Nodo n) {
         if (n != null) {
             inorden(n.getIzquierda());
-            n.imprimirDato();
+            resultado += n.getDato() + ",";
             inorden(n.getDerecha());
         }
+
     }
 
     private void postorden(Nodo n) {
         if (n != null) {
             postorden(n.getIzquierda());
             postorden(n.getDerecha());
-            n.imprimirDato();
+            resultado += n.getDato() + ",";
         }
+
     }
 
-    public void preorden() {
+    public String preorden() {
         this.preorden(this.raiz);
+        return resultado;
+
     }
 
-    public void inorden() {
+    public String inorden() {
         this.inorden(this.raiz);
+        return resultado;
     }
 
-    public void postorden() {
+    public String postorden() {
+
         this.postorden(this.raiz);
+        return resultado;
     }
 
 
